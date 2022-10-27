@@ -5,9 +5,9 @@
   "author": "GyeongSeok Seo <gseok.seo@gmail.com> (https://gseok.github.io)",
   "main": "src/game.ts",
   "scripts": {
-    "dev": "rollup --config rollup.config.dev.js",
-    "build": "rollup --config rollup.config.dist.js",
-    "watch": "rollup --watch --config rollup.config.dev.js"
+    "build:dev": "rollup --config rollup.config.js dev",
+    "build:prd": "rollup --config rollup.config.js",
+    "serve": "rollup --watch --config rollup.config.js dev"
   },
   "license": "MIT",
   "dependencies": {
