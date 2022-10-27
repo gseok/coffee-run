@@ -14,6 +14,9 @@ export default (commandLineArgs) => {
   const isDev =  !!(commandLineArgs?.input?.includes('dev'));
   delete commandLineArgs.input;
 
+  console.log('Build is Dev:', isDev);
+  console.log('Build is Watch:', isWatching);
+
   return {
     //  Our games entry point (edit as required)
     input: [
