@@ -34,6 +34,25 @@ export default class Demo extends Phaser.Scene {
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
 
+    this.anims.create({
+      key: 'left',
+      frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'turn',
+      frames: [{ key: 'dude', frame: 4 }],
+      frameRate: 20,
+    });
+
+    this.anims.create({
+      key: 'right',
+      frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+      frameRate: 10,
+      repeat: -1,
+    });
     // this.add.shader('RGB Shift Field', 0, 0, 800, 600).setOrigin(0);
 
     // this.add.shader('Plasma', 0, 412, 800, 172).setOrigin(0);
