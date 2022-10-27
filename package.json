@@ -1,0 +1,16 @@
+{
+  "name": "coffee-run",
+  "projectName": "coffee-run",
+  "version": "0.0.1",
+  "description": "coffee run project",
+  "workspaces": [
+    "projects/*"
+  ],
+  "author": "GyeongSeok Seo <gseok.seo@gmail.com> (https://gseok.github.io)",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo test"
+  },
+  "devDependencies": {
+  }
+}

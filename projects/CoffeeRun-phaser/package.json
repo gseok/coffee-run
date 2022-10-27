@@ -1,0 +1,13 @@
+{
+  "name": "coffeerun-phaser",
+  "version": "0.0.1",
+  "description": "Who wants to buy us some coffee?",
+  "author": "GyeongSeok Seo <gseok.seo@gmail.com> (https://gseok.github.io)",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo test"
+  },
+  "dependencies": {
+    "phaser": "3.55.2"
+  }
+}
