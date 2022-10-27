@@ -84,7 +84,11 @@ export default (commandLineArgs) => {
           },
         }),
 
-      isDev && isWatching && livereload(),
+      isDev && isWatching && livereload({
+        watch: `${dist}`,
+        verbose: true,
+        delay: 1500,
+      }),
 
       // 배포시에만 사용
       !isDev &&
