@@ -5,6 +5,7 @@ import replace from '@rollup/plugin-replace';
 import serve from 'rollup-plugin-serve';
 import typescript from 'rollup-plugin-typescript2';
 import { uglify } from 'rollup-plugin-uglify';
+import copy from 'rollup-plugin-copy';
 
 const root = path.join(__dirname, '../..');
 const dist = path.resolve(root, 'dist');
@@ -66,6 +67,13 @@ export default (commandLineArgs) => {
 
       // See https://www.npmjs.com/package/rollup-plugin-typescript2 for config options
       typescript(),
+
+      copy({
+        targets: [
+          { src: 'src/index.html', dest: `${dist}` },
+          { src: 'assets/**/*', dest: `${dist}/assets` }
+        ]
+      }),
 
       // 개발시에만 사용
       // See https://www.npmjs.com/package/rollup-plugin-serve for config options
