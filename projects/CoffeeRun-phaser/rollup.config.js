@@ -1,6 +1,6 @@
 import path from 'path';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import serve from 'rollup-plugin-serve';
 import typescript from 'rollup-plugin-typescript2';
@@ -56,11 +56,11 @@ export default (commandLineArgs) => {
       // We need to convert the Phaser 3 CJS modules into a format Rollup can use:
       commonjs({
         include: [
-          'node_modules/eventemitter3/**',
-          'node_modules/phaser/**'
+          `${root}/node_modules/eventemitter3/**`,
+          `${root}/node_modules/phaser/**`
         ],
         exclude: [
-          'node_modules/phaser/src/polyfills/requestAnimationFrame.js'
+          `${root}/node_modules/phaser/src/polyfills/requestAnimationFrame.js`
         ],
         sourceMap: isDev, // dev일때는 true, 배포시에는 false
         ignoreGlobal: true
