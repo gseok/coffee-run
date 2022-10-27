@@ -43,6 +43,7 @@
     "tmp",
     "jest.config.ts",
     "**/*.spec.ts",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "**/assets"
   ]
 }

@@ -18,3 +18,4 @@ jest.config.js
 conf
 **/assets/*
 projects/CoffeeRun-old
+projects/CoffeeRun-phaser/assets/*
