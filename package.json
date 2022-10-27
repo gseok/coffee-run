@@ -10,7 +10,9 @@
   "author": "GyeongSeok Seo <gseok.seo@gmail.com> (https://gseok.github.io)",
   "license": "MIT",
   "scripts": {
-    "test": "echo test"
+    "build": "yarn workspace coffeerun-phaser build:prd",
+    "build:dev": "yarn workspace coffeerun-phaser build:dev",
+    "serve": "yarn workspace coffeerun-phaser serve"
   },
   "devDependencies": {
   }
