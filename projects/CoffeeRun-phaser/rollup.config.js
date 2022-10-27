@@ -80,11 +80,11 @@ export default (commandLineArgs) => {
       // See https://www.npmjs.com/package/rollup-plugin-serve for config options
       isDev && isWatching && serve({
         open: true,
-        contentBase: 'dist',
+        contentBase: `${dist}`,
         host: 'localhost',
         port: 10001,
         headers: {
-        'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*'
         }
       }),
 
