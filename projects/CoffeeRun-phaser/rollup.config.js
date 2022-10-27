@@ -11,8 +11,8 @@ const root = path.join(__dirname, '../..');
 const dist = path.resolve(root, 'dist');
 
 export default (commandLineArgs) => {
-  const isWatching = process.argv.includes('-w') || process.argv.includes('--watch')
-  const isDev =  !!(commandLineArgs?.input?.includes('dev'));
+  const isWatching = process.argv.includes('-w') || process.argv.includes('--watch');
+  const isDev = !!commandLineArgs?.input?.includes('dev');
   delete commandLineArgs.input;
 
   console.log('Build is Dev:', isDev);
@@ -20,9 +20,7 @@ export default (commandLineArgs) => {
 
   return {
     //  Our games entry point (edit as required)
-    input: [
-      './src/game.ts'
-    ],
+    input: ['./src/game.ts'],
 
     // Where the build file is to be generated.
     // Most games being built for distribution can use iife as the module type.
@@ -33,7 +31,7 @@ export default (commandLineArgs) => {
       name: 'coffeerun',
       format: 'iife',
       sourcemap: true,
-      intro: 'var global = window;'
+      intro: 'var global = window;',
     },
 
     plugins: [
@@ -45,25 +43,20 @@ export default (commandLineArgs) => {
         'typeof EXPERIMENTAL': JSON.stringify(true),
         'typeof PLUGIN_CAMERA3D': JSON.stringify(false),
         'typeof PLUGIN_FBINSTANT': JSON.stringify(false),
-        'typeof FEATURE_SOUND': JSON.stringify(true)
+        'typeof FEATURE_SOUND': JSON.stringify(true),
       }),
 
       // Parse our .ts source files
       resolve({
-        extensions: [ '.ts', '.tsx' ]
+        extensions: ['.ts', '.tsx'],
       }),
 
       // We need to convert the Phaser 3 CJS modules into a format Rollup can use:
       commonjs({
-        include: [
-          `${root}/node_modules/eventemitter3/**`,
-          `${root}/node_modules/phaser/**`
-        ],
-        exclude: [
-          `${root}/node_modules/phaser/src/polyfills/requestAnimationFrame.js`
-        ],
+        include: [`${root}/node_modules/eventemitter3/**`, `${root}/node_modules/phaser/**`],
+        exclude: [`${root}/node_modules/phaser/src/polyfills/requestAnimationFrame.js`],
         sourceMap: isDev, // dev일때는 true, 배포시에는 false
-        ignoreGlobal: true
+        ignoreGlobal: true,
       }),
 
       // See https://www.npmjs.com/package/rollup-plugin-typescript2 for config options
@@ -72,26 +65,29 @@ export default (commandLineArgs) => {
       copy({
         targets: [
           { src: 'src/index.html', dest: `${dist}` },
-          { src: 'assets/**/*', dest: `${dist}/assets` }
-        ]
+          { src: 'assets/**/*', dest: `${dist}/assets` },
+        ],
       }),
 
       // 개발시에만 사용
       // See https://www.npmjs.com/package/rollup-plugin-serve for config options
-      isDev && isWatching && serve({
-        open: true,
-        contentBase: `${dist}`,
-        host: 'localhost',
-        port: 10001,
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      }),
+      isDev &&
+        isWatching &&
+        serve({
+          open: true,
+          contentBase: `${dist}`,
+          host: 'localhost',
+          port: 10001,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        }),
 
       // 배포시에만 사용
-      !isDev && uglify({
-        mangle: false
-      })
-    ].filter(Boolean)
+      !isDev &&
+        uglify({
+          mangle: false,
+        }),
+    ].filter(Boolean),
   };
 };

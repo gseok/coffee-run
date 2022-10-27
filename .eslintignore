@@ -19,3 +19,4 @@ conf
 **/assets/*
 projects/CoffeeRun-old
 projects/CoffeeRun-phaser/assets/*
+/projects/CoffeeRun-phaser/rollup.config.js

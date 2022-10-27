@@ -14,11 +14,11 @@ export default class Demo extends Phaser.Scene {
   }
 
   create() {
-    const image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'sky')
-    const scaleX = this.cameras.main.width / image.width
-    const scaleY = this.cameras.main.height / image.height
-    const scale = Math.max(scaleX, scaleY)
-    image.setScale(scale).setScrollFactor(0)
+    const image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'sky');
+    const scaleX = this.cameras.main.width / image.width;
+    const scaleY = this.cameras.main.height / image.height;
+    const scale = Math.max(scaleX, scaleY);
+    image.setScale(scale).setScrollFactor(0);
 
     // this.add.shader('RGB Shift Field', 0, 0, 800, 600).setOrigin(0);
 
@@ -45,7 +45,7 @@ const config = {
   backgroundColor: '#125555',
   width: window.innerWidth - bodyMargin * 2,
   height: window.innerHeight - bodyMargin * 2,
-  scene: Demo
+  scene: Demo,
 };
 
 const game = new Phaser.Game(config);
