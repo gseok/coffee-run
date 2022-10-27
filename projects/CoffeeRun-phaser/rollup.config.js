@@ -6,7 +6,7 @@ import serve from 'rollup-plugin-serve';
 import typescript from 'rollup-plugin-typescript2';
 import { uglify } from 'rollup-plugin-uglify';
 import copy from 'rollup-plugin-copy';
-import hmr from 'rollup-plugin-hot';
+import livereload from 'rollup-plugin-livereload';
 
 const root = path.join(__dirname, '../..');
 const dist = path.resolve(root, 'dist');
@@ -84,10 +84,7 @@ export default (commandLineArgs) => {
           },
         }),
 
-      isDev && isWatching && hmr({
-        public: `${dist}`,
-        baseUrl: '/',
-      }),
+      isDev && isWatching && livereload(),
 
       // 배포시에만 사용
       !isDev &&

@@ -30,7 +30,7 @@ export default class Demo extends Phaser.Scene {
     platforms.create(750, 220, 'ground');
 
     // player
-    const player = this.physics.add.sprite(300, 50, 'dude');
+    const player = this.physics.add.sprite(300, 0, 'dude');
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
 
